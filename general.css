@@ -6,3 +6,7 @@ body
     background-color:#AAB6F5;
     margin-bottom: 1000px;
 }
+
+div{
+    margin: 0;
+}

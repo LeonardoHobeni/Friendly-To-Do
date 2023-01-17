@@ -1,25 +1,57 @@
 .to-do-list
 {
-    background-color: white;
+    background-color: rgb(251, 249, 249);
+    display: grid;
+    grid-template-columns: 90%;
     width: 90%;
     margin-left: 4%;
     height: 500px;
-    text-align: center;
+    justify-content: center;
     font-weight: 500;
     font-size: 32px;
-    position: absolute;
     margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: inset 1px 0 14px rgb(67, 67, 67);
+    overflow: scroll;
+    padding: 10px 0;
     
 }
 
-.to-do-list .empty-list
+.empty-list
 {   
     position: relative;
     margin-top: 222px;
     color: rgba(0, 0, 0, 0.541);
+    text-align: center;
+ }
+
+.to-do-content
+{
+    background-color: green;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    height: 40px;
 }
 
-.empty-list:hover
+.to-do
 {
-    opacity: 0.53;
+    margin: 0 50px 0 0px;
+}
+
+.container-btn
+{
+    width: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-left:70px;
+}
+
+.status-btn, .edit-btn, .remove-btn
+{
+    width: 20px;
+    height:20px;
 }

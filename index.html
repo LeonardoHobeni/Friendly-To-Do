@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="general.css">
         <link rel="stylesheet" href="header.css">
         <link rel="stylesheet" href="List.css">
+
+        <script src="toDo.js"></script>
     </head>
 
     <body>
@@ -24,13 +26,13 @@
 
             <div class="newToDo">
                 <input type="text" class="input-todo"
-                placeholder="Enter to do name">
-                <button class="add-todo">Add</button>
+                placeholder="Enter to do name" id="inputTo">
+                <button class="add-todo" onclick="addToDo('inputTo', 'list')">Add</button>
             </div>
         </div>
 
         <div class="to-do-list" id="list">
-            <p class="empty-list">
+            <p class="empty-list" id="empty">
                 Empty List
             </p>
         </div>
