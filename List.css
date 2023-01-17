@@ -1,0 +1,25 @@
+.to-do-list
+{
+    background-color: white;
+    width: 90%;
+    margin-left: 4%;
+    height: 500px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 32px;
+    position: absolute;
+    margin-top: 30px;
+    
+}
+
+.to-do-list .empty-list
+{   
+    position: relative;
+    margin-top: 222px;
+    color: rgba(0, 0, 0, 0.541);
+}
+
+.empty-list:hover
+{
+    opacity: 0.53;
+}
