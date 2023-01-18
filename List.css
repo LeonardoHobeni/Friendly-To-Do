@@ -1,13 +1,14 @@
 .to-do-list
 {
     background-color: rgb(251, 249, 249);
-    display: grid;
-    grid-template-columns: 90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
     width: 90%;
     margin-left: 4%;
     height: 500px;
-    justify-content: center;
     font-weight: 500;
+    align-items: center;
     font-size: 32px;
     margin-top: 30px;
     border-radius: 10px;
@@ -27,31 +28,56 @@
 
 .to-do-content
 {
-    background-color: green;
+    background-color: #e9e32c;
     font-size: 20px;
+    width:87%;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 0;
+    justify-content: space-between;
+    box-shadow: 0 0 4px green;
+    padding: 10px;
     height: 40px;
 }
 
 .to-do
 {
-    margin: 0 50px 0 0px;
+    overflow: hidden;
+    width: 70%;
 }
 
 .container-btn
 {
-    width: 70px;
-    background-color: white;
+    width: 80px;
+    background-color: #e9e32c;
     display: flex;
     justify-content: space-between;
-    margin-left:70px;
 }
 
-.status-btn, .edit-btn, .remove-btn
+.status-btn, .edit-btn, .remove-btn, .completed
 {
-    width: 20px;
-    height:20px;
+    width: 24px;
+    height:24px;
+    position: relative;
+    border: hidden;
+    box-shadow: inset 2px -1px 4px gray;
+}
+
+.status-btn, .completed
+{
+    border-radius: 12px;
+}
+
+.completed
+{
+    background-color: rgb(14, 201, 14);
+}
+
+.status-icon, .edit-icon, .remove-icon
+{
+    width: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: red;
 }

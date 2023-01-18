@@ -1,22 +1,60 @@
 function addToDo(idInput, idSlab)
 {
     let toDoName= (document.getElementById(idInput)).value;
-    toDoContent(idSlab, toDoName);
+    if(toDoName !== '')
+    {
+        toDoContent(idSlab, toDoName);
+        (document.getElementById(idInput)).value= '';
+    }
+    else
+    {
+        alert('Invalid Action, To Do Name not included!');
+    }
+
 }
 
 function toDoContent(id, name)
 {
     let contentElement= document.getElementById(id);
-    let num= contentElement.children.length;
-    if(contentElement.children[0].getAttribute('id') === 'empty')
+    let num;
+    if(contentElement.children[0].getAttribute('id') === 'empty'){
         clearContent(id);
+        num=0;
+    }
+    else
+    {
+        num=contentElement.children.length;
+    }
+
      contentElement.appendChild(buildToDoTab(name, num ,[
-            {btnClass: 'status-btn', imgClass: 'status-icon', imgId: 'stat-icon', func: 'updateStatus()', imgSrc: ''},
-            {btnClass: 'edit-btn', imgClass: 'edit-icon', imgId: '', func: 'editToDo("'+num+'")', imgSrc: 'Project icons/edit icon.png'},
-            {btnClass: 'remove-btn', imgClass: 'remove-icon', imgId: '', func: 'removeToDo("'+(num-1)+'")', imgSrc: 'Project icons/remove icon.png'},
+            {btnClass: 'status-btn', btnID: (num+3), imgClass: 'status-icon', imgId: num, func: 'updateStatus("'+num+'"\,"'+(num+3)+'")', imgSrc:''},
+            {btnClass: 'edit-btn', btnID: '', imgClass: 'edit-icon', imgId: '', func: 'editToDo("'+num+'")', imgSrc: 'Project icons/edit icon.png'},
+            {btnClass: 'remove-btn', btnID: '', imgClass: 'remove-icon', imgId: '', func: 'removeToDo("'+(num-1)+'")', imgSrc: 'Project icons/remove icon.png'},
 
         ]));
     
+}
+
+function updateStatus(id, btnID)
+{
+    let statBtn= document.getElementById(Number(id));
+    
+    if(statBtn.getAttribute('src') == '')
+    {
+        let resp= confirm('Click OK to confirm task is completed.');
+        if(resp){
+            statBtn.setAttribute('src', 'Project icons/status icon.png');
+            (document.getElementById(Number(btnID))).className= 'completed';
+        }
+    }
+    else
+    {
+        let resp= confirm('You are about to uncheck a\ncompleted task.');
+        if(resp){
+            statBtn.setAttribute('src', '');
+            (document.getElementById(Number(btnID))).className= 'status-btn';
+        }
+    }
 }
 
 function clearContent(id)
@@ -33,7 +71,7 @@ function buildToDoTab(name, num, schema)
     todoElement.className= "to-do-content";
     todoTitleElement.className= 'to-do';
     todoTitleElement.innerText= name;
-    todoTitleElement.setAttribute('id', num);
+    todoTitleElement.setAttribute('id', "todo"+(num+1));
     todoElement.appendChild(todoTitleElement);
 
     //creating buttons
@@ -45,6 +83,7 @@ function buildToDoTab(name, num, schema)
         let btnIcon= document.createElement('img');
         btn.className= item.btnClass;
         btn.setAttribute('onclick', item.func);
+        btn.setAttribute('id', item.btnID);
         btnIcon.className= item.imgClass;
         btnIcon.setAttribute('id', item.imgId);
         btnIcon.src= item.imgSrc;
