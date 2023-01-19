@@ -5,7 +5,6 @@
     width: 90%;
     height:190px;
     text-align: center;
-    margin-left: 4%;
     padding-top: 50px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgb(85, 84, 84);
@@ -48,12 +47,12 @@
     border-top-right-radius: 11px;
     border-bottom-right-radius: 11px;
     color: white;
-    background-color:#30B4DE;
+    background-color:#1197c0;
     border-style: none;
     box-shadow: inset 0px 0px 10px rgba(132, 141, 141, 0.544);
     margin-left: -5px;
     cursor: pointer;
-    transition: opacity 20ms;
+    transition: opacity 95ms;
 }
 
 .add-todo:hover
