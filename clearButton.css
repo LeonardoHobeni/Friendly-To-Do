@@ -14,6 +14,7 @@
     border-radius: 10px;
     box-shadow: 1px 1px 4px rgb(211, 80, 80);
     transition: opacity 95ms;
+    cursor: pointer;
 }
 
 .clear-btn:hover
@@ -24,4 +25,13 @@
 .clear-btn:active
 {
     opacity: 0.6;
+}
+
+@media (min-width:700px)
+{
+    .clear-btn
+    {
+    
+        font-size: 30px;
+    }
 }

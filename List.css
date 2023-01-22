@@ -104,3 +104,40 @@
 {
     opacity: 0.5;
 }
+
+@media (min-width: 700px){
+    .to-do-list
+    {
+        padding-top:20px;
+    }
+
+    .to-do-content
+    {
+        
+        font-size: 27px;
+        width:90%;
+        height: 50px;
+    }
+
+    .status-btn, .edit-btn, .remove-btn, .completed
+    {
+        width: 30px;
+        height:30px;
+    }
+
+    .container-btn
+    {
+        width: 100px;
+    }
+
+    .status-btn, .completed
+    {
+        border-radius: 15px;
+    }
+
+    .empty-list
+    {   
+       font-size: 60px;
+    }
+
+}

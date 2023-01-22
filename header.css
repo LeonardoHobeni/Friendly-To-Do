@@ -14,7 +14,7 @@
 {
     color: #4a498dfc;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 29px;
     text-shadow: 2px 2px 3px #4a498dfc, 3px 5px 5px rgb(25, 122, 219);
 }
 
@@ -63,4 +63,40 @@
 .add-todo:active
 {
     opacity: 0.5;
+}
+
+@media (min-width:700px)
+{
+    .header-content
+    {
+        padding-bottom: 20px;
+    }
+    .heading
+    {
+        font-size: 60px;
+    }
+
+    .input-todo
+    {
+        padding: 18px 19px 18px 16px;
+        width:300px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 9px;
+        font-size: 19px;
+    }
+
+    .input-todo::placeholder
+    {
+        font-size: 19px;
+        font-weight: 500;
+    }
+
+    .add-todo
+    {
+        padding: 19px;
+        font-size: 20px;
+        border-top-right-radius: 11px;
+        border-bottom-right-radius: 11px;
+        box-shadow: inset 0px 0px 10px rgba(132, 141, 141, 0.544);
+    }
 }
