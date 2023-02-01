@@ -35,8 +35,8 @@ function loadToDos()
 
 function buildLoadedToDos(idSlab, containerId)
 {
-    let contentElement= document.getElementById(idSlab);
-    let containerElement= document.getElementById(containerId);
+    let contentElement= document.querySelector('#'+idSlab);
+    let containerElement= document.querySelector('#'+containerId);
     switch(loadToDos())
     {
         case 0:
@@ -73,11 +73,11 @@ function toDoTab(title, num, schema)
 
 function addToDo(idInput, idSlab)
 {
-    let toDoName= (document.getElementById(idInput)).value;
+    let toDoName= (document.querySelector('#'+idInput)).value;
     if(toDoName !== '')
     {
         toDoContent(idSlab, toDoName);
-        (document.getElementById(idInput)).value= '';
+        toDoName.value= '';
         
     }
     else
@@ -89,7 +89,7 @@ function addToDo(idInput, idSlab)
 function createClearBtn(containerElement)
 {
     let clearBtn= document.createElement('button');
-    clearBtn.className= 'clear-btn';
+    clearBtn.classList.add('clear-btn');
     clearBtn.innerText= 'Clear List';
     clearBtn.setAttribute('onclick', 'clearList()');
     containerElement.appendChild(clearBtn);
@@ -99,7 +99,7 @@ function toDoContent(id, name)
 {
     let contentElement= document.getElementById(id);
     let num;
-    let containerElement= document.getElementById('clear');
+    let containerElement= document.querySelector('#clear');
     if(contentElement.children[0].getAttribute('id') === 'empty'){
         clearContent(id);
         num=0;
@@ -121,7 +121,7 @@ function toDoContent(id, name)
 
 function removeToDo(id)
 {   
-    let clearBtn= document.getElementById('clear');
+    let clearBtn= document.querySelector('#clear');
     let contentElement = document.getElementById('list');
     let unDeleted=[];
     let todoObject={};
@@ -183,8 +183,8 @@ function removeToDo(id)
 }
 function clearList()
 {
-    let contentElement = document.getElementById('list');
-    let clearBtn= document.getElementById('clear');
+    let contentElement = document.querySelector('#list');
+    let clearBtn= document.querySelector('#clear');
 
     //clearing to do list
     while(contentElement.children.length>0)
@@ -200,7 +200,7 @@ function clearList()
 function createEmptyList()
 {
     let emptyPar= document.createElement('p');
-    emptyPar.className='empty-list';
+    emptyPar.classList.add('empty-list')
     emptyPar.setAttribute('id', 'empty');
     emptyPar.innerText= 'Empty List';
     return emptyPar;
@@ -208,7 +208,7 @@ function createEmptyList()
 
 function editToDo(id)
 {   
-    let todoEle= document.getElementById('todo'+id);
+    let todoEle= document.querySelector('#todo'+id);
     const newName= prompt('Editing To Do title:', todoEle.innerText);
     if(newName != null)
     {
@@ -223,14 +223,14 @@ function editToDo(id)
 
 function updateStatus(id, btnID)
 {
-    let statBtn= document.getElementById(Number(id));
+    let statBtn= document.querySelector('#'+id);
     
     if(statBtn.getAttribute('src') == '')
     {
         let resp= confirm('Click OK to confirm task is completed.');
         if(resp){
             statBtn.setAttribute('src', 'Project icons/status icon.png');
-            (document.getElementById(Number(btnID))).className= 'completed';
+            (document.getElementById(Number(btnID))).classList.add('completed');
         }
     }
     else
@@ -238,7 +238,7 @@ function updateStatus(id, btnID)
         let resp= confirm('You are about to uncheck a\ncompleted task.');
         if(resp){
             statBtn.setAttribute('src', '');
-            (document.getElementById(Number(btnID))).className= 'status-btn';
+            (document.getElementById(Number(btnID))).classList.add('status-btn');
         }
     }
 }
@@ -254,9 +254,9 @@ function buildTab(name,num)
 {
     let todoElement= document.createElement('div');
     let todoTitleElement= document.createElement('p');
-    todoElement.className= "to-do-content";
+    todoElement.classList.add("to-do-content");
     todoElement.setAttribute('id', 'tab'+(num+1))
-    todoTitleElement.className= 'to-do';
+    todoTitleElement.classList.add('to-do');
     todoTitleElement.innerText= name;
     todoTitleElement.setAttribute('id', "todo"+(num+1));
     todoElement.appendChild(todoTitleElement);
@@ -266,15 +266,15 @@ function buildTab(name,num)
 function tabButtons(schema)
 {
     let btnContainer= document.createElement('div');
-    btnContainer.className='container-btn';
+    btnContainer.classList.add('container-btn');
     for(item of schema)
     {     
         let btn= document.createElement('button');
         let btnIcon= document.createElement('img');
-        btn.className= item.btnClass;
+        btn.classList.add(item.btnClass);
         btn.setAttribute('onclick', item.func);
         btn.setAttribute('id', item.btnID);
-        btnIcon.className= item.imgClass;
+        btnIcon.classList.add(item.imgClass);
         btnIcon.setAttribute('id', item.imgId);
         btnIcon.src= item.imgSrc;
         btn.appendChild(btnIcon);
