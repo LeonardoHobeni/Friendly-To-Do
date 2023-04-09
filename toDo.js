@@ -110,12 +110,12 @@ function toDoContent(id, name)
         num=contentElement.children.length;
     }
 
-     contentElement.appendChild(buildToDoTab(name, num ,[
-            {btnClass: 'status-btn', btnID: (num+3), imgClass: 'status-icon', imgId: num, func: 'updateStatus("'+num+'"\,"'+(num+3)+'")', imgSrc:''},
-            {btnClass: 'edit-btn', btnID: '', imgClass: 'edit-icon', imgId: '', func: 'editToDo("'+(num+1)+'")', imgSrc: 'Project icons/edit icon.png'},
-            {btnClass: 'remove-btn', btnID: 'rem'+(num+3), imgClass: 'remove-icon', imgId: '', func: 'removeToDo("'+(num+1)+'")', imgSrc: 'Project icons/remove icon.png'},
+    contentElement.appendChild(buildToDoTab(name, num ,[
+        {btnClass: 'status-btn', btnID: (num+3), imgClass: 'status-icon', imgId: num, func: 'updateStatus("'+num+'"\,"'+(num+3)+'")', imgSrc:''},
+        {btnClass: 'edit-btn', btnID: '', imgClass: 'edit-icon', imgId: '', func: 'editToDo("'+(num+1)+'")', imgSrc: 'Project icons/edit icon.png'},
+        {btnClass: 'remove-btn', btnID: 'rem'+(num+3), imgClass: 'remove-icon', imgId: '', func: 'removeToDo("'+(num+1)+'")', imgSrc: 'Project icons/remove icon.png'},
 
-        ]));
+    ]));
     
 }
 
@@ -165,7 +165,7 @@ function removeToDo(id)
         {
             todoTag.setAttribute('id', 'tab'+(idNum-1));
             todoTitle.setAttribute('id', 'todo'+(idNum-1));
-            editBtn.setAttribute('id', 'editToDo("'+(idNum-1)+'")');
+            editBtn.setAttribute('onclick', 'editToDo("'+(idNum-1)+'")');
             remBtn.setAttribute('onclick', 'removeToDo("'+(idNum-1)+'")');
         }
     }
@@ -223,13 +223,13 @@ function editToDo(id)
 
 function updateStatus(id, btnID)
 {
-    let statBtn= document.querySelector('#'+id);
+    let statBtn= document.getElementById(id);
     
     if(statBtn.getAttribute('src') == '')
     {
         let resp= confirm('Click OK to confirm task is completed.');
         if(resp){
-            statBtn.setAttribute('src', 'Project icons/status icon.png');
+            statBtn.setAttribute('src', './Project icons/status icon.png');
             (document.getElementById(Number(btnID))).classList.add('completed');
         }
     }
@@ -238,7 +238,7 @@ function updateStatus(id, btnID)
         let resp= confirm('You are about to uncheck a\ncompleted task.');
         if(resp){
             statBtn.setAttribute('src', '');
-            (document.getElementById(Number(btnID))).classList.add('status-btn');
+            (document.getElementById(Number(btnID))).classList.remove('completed');
         }
     }
 }
